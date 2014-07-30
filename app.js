@@ -61,10 +61,12 @@ app.get('/', function(req, res){
 });
 
 app.post('/entrar', function(req, res){
-	var rut = req.body.rut;
-	var digito = rut[rut.length-1];
-	var request = new sql.Request();
+	var rutCompleto = req.body.rut;
+	var length = rutCompleto.length - 1;
+	var rut = rutCompleto.slice(0, length);
+	var digito = rutCompleto[length];
 
+	var request = new sql.Request();
 	request.query('SELECT CODCLI,DIG,PATERNO,MATERNO,NOMBRE,DIRACTUAL,COMUNA,CIUDADACT,FONOACT,CELULARACT,EMAILACT FROM MT_CLIENT WHERE CODCLI = ' + rut, function(err, alumno) {
 		if(err) console.error(err);
 
