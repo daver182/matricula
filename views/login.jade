@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1 Login
+	.error=error
+	form(method="POST", action="/entrar")
+		label RUT:
+		input(type="text", name="rut", required)
+		label -
+		input(type="text", name="digito")
+		input(type="submit", value="Entrar")
