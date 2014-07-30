@@ -1,9 +1,29 @@
 extends layout
 
 block content
-	h1 Login
-	.error=error
-	form(method="POST", action="/entrar")
+	.container-fluid
+		.row
+			.col-sm-1 
+			.col-sm-10
+				header
+					h1 Actualiza tu datos para la matricula
+			.col-sm-1 
+
+		.row
+			.col-sm-3
+			.col-sm-6.content
+				.center-block
+					form(role="form", method="POST", action="/entrar")
+						.form-group
+							label(for="RUT") Ingresa tu RUT
+							input.form-control(type="text", name="rut", required, placeholder="Sin puntos ni guiones")
+
+						button.btn.btn-primary(type="submit") Entrar
+			.col-sm-3
+					
+	//h1 Login
+	//.error=error
+	//form(method="POST", action="/entrar")
 		label RUT:
 		input(type="text", name="rut", required)
 		label -

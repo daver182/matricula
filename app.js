@@ -1,5 +1,4 @@
 var express = require('express');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var sql = require('mssql');
@@ -63,7 +62,7 @@ app.get('/', function(req, res){
 
 app.post('/entrar', function(req, res){
 	var rut = req.body.rut;
-	var digito = req.body.digito;
+	var digito = rut[rut.length-1];
 	var request = new sql.Request();
 
 	request.query('SELECT CODCLI,DIG,PATERNO,MATERNO,NOMBRE,DIRACTUAL,COMUNA,CIUDADACT,FONOACT,CELULARACT,EMAILACT FROM MT_CLIENT WHERE CODCLI = ' + rut, function(err, alumno) {

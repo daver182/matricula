@@ -1,8 +1,27 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, body{
+	height: 100%;
 }
 
-a {
-  color: #00B7FF;
+.container-fluid{
+	height: 100%;
+	background: #eee
+}
+
+.container-fluid .row:first-child{
+	background: #0B751C;
+	border-bottom: #FC0 4px solid;
+}
+
+.container-fluid .row:first-child header{
+	text-align: center;color: white;
+}
+
+.container-fluid .row:last-child{
+	margin-top: 20px;
+}
+
+.container-fluid .row:last-child .content{
+	background: #fff;
+	border-radius: 10px;
+	padding: 30px;
 }
