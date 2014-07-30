@@ -1,20 +1,19 @@
 extends layout
 
 block content
-	h1 Tus Datos
-	form(method="POST", action="/guardar")
-		label RUT:
-		input(type="text", name="rut_completo", value="#{alumno.CODCLI + '-' + alumno.DIG}" , disabled) 
+	h2 Tus Datos
+	form(role="form", method="POST", action="/guardar")
+		label(for="rut_completo") RUT:
+		input.form-control(type="text", name="rut_completo", value="#{alumno.CODCLI + '-' + alumno.DIG}" , disabled) 
 		br
-		label Nombre Completo:
-		input(type="text", name="nombre_completo", value="#{alumno.NOMBRE + ' ' + alumno.PATERNO + ' ' + alumno.MATERNO}", disabled)
+		label(for="nombre_completo") Nombre Completo:
+		input.form-control(type="text", name="nombre_completo", value="#{alumno.NOMBRE + ' ' + alumno.PATERNO + ' ' + alumno.MATERNO}", disabled)
 		br
-		label Dirección:
-		input(type="text", name="direccion", value="#{alumno.DIRACTUAL}", required)
+		label(for="direccion") Dirección:
+		input.form-control(type="text", name="direccion", value="#{alumno.DIRACTUAL}", required)
 		br
-		label Comuna:
-		//input(type="text", name="direccion", value="#{alumno.COMUNA}", required)
-		select(name="comuna", required)
+		label(for="comuna") Comuna:
+		select.form-control(name="comuna", required)
 			each comuna in comunas
 				-if(comuna.NOMCOMUNA == alumno.COMUNA)
 					option(value="#{comuna.NOMCOMUNA}", selected)=comuna.NOMCOMUNA
@@ -22,8 +21,7 @@ block content
 					option(value="#{comuna.NOMCOMUNA}")=comuna.NOMCOMUNA
 		br
 		label Ciudad:
-		//input(type="text", name="ciudad", value="#{alumno.CIUDADACT}", required)
-		select(name="ciudad", required)
+		select.form-control(name="ciudad", required)
 			each ciudad in ciudades
 				-if(ciudad.NOMCIUDAD == alumno.CIUDADACT)
 					option(value="#{ciudad.NOMCIUDAD}", selected)=ciudad.NOMCIUDAD
@@ -31,12 +29,12 @@ block content
 					option(value="#{ciudad.NOMCIUDAD}")=ciudad.NOMCIUDAD
 		br
 		label Teléfono Fijo:
-		input(type="text", name="telefono", value="#{alumno.FONOACT}", required)
+		input.form-control(type="text", name="telefono", value="#{alumno.FONOACT}", required)
 		br
 		label Teléfono Celular:
-		input(type="text", name="telefono", value="#{alumno.CELULARACT}", required)
+		input.form-control(type="text", name="telefono", value="#{alumno.CELULARACT}", required)
 		br
 		label Email:
-		input(type="text", name="email", value="#{alumno.EMAILACT}", required)
+		input.form-control(type="text", name="email", value="#{alumno.EMAILACT}", required)
 		br
-		input(type="submit", value="Guardar")
+		button.btn.btn-primary(type="submit") Guardar

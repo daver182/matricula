@@ -2,9 +2,8 @@ html, body{
 	height: 100%;
 }
 
-.container-fluid{
-	height: 100%;
-	background: #eee
+body{
+	background: #eee;
 }
 
 .container-fluid .row:first-child{
@@ -18,6 +17,7 @@ html, body{
 
 .container-fluid .row:last-child{
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .container-fluid .row:last-child .content{
