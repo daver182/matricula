@@ -2,6 +2,9 @@ extends layout
 
 block content
 	h2 Tus Datos
+	p Ten cuidado, no puedes volver a modificarlos
+	if error
+		.alert.alert-danger(role="alert")=error
 	form#datos-form(role="form", method="POST", action="/guardar", novalidate)
 		.form-group
 			label(for="rut_completo") RUT:
@@ -39,3 +42,4 @@ block content
 			input.form-control(type="email", name="email", value="#{alumno.EMAILACT}", required)
 		
 		button.btn.btn-primary(type="submit") Guardar
+		a.btn.btn-warning.pull-right(href="/salir") Salir
