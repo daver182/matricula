@@ -137,7 +137,6 @@ app.post('/guardar', function(req, res){
 
 	if(req.body.direccion && req.body.comuna && req.body.ciudad && req.body.telefono && req.body.celular && req.body.email){
 		var query = "UPDATE MT_CLIENT SET DIRACTUAL = '"+req.body.direccion.toUpperCase()+"', COMUNA = '"+req.body.comuna+"', CIUDADACT = '"+req.body.ciudad+"', FONOACT = '"+req.body.telefono+"', CELULARACT = '"+req.body.celular+"', EMAILACT = '"+req.body.email.toUpperCase()+"' WHERE CODCLI = '" + req.session.alumno.CODCLI + "'";
-		console.log(query)
 
 		var transaction = new sql.Transaction();
 		transaction.begin(function(err) {
