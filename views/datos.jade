@@ -2,7 +2,6 @@ extends layout
 
 block content
 	h2 Tus Datos
-	p Ten cuidado, no puedes volver a modificarlos
 	if error
 		.alert.alert-danger(role="alert")=error
 	form#datos-form(role="form", method="POST", action="/guardar", novalidate)

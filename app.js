@@ -67,6 +67,9 @@ app.get('/', function(req, res){
 			case '1':
 				res.render('login', { error: 'La contraseña es incorrecta' });
 				break;
+			case '2':
+				res.render('login', { error: 'No se han recibido algunos datos. Intentalo de nuevo' });
+				break;
 
 			default:
 				break;
@@ -79,6 +82,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/entrar', function(req, res){
+	if(!req.body.rut) return res.redirect('/?ERROR=2');
+	if(!req.body.password) return res.redirect('/?ERROR=2');
+
 	var rutCompleto = req.body.rut;
 	var rut = rutCompleto.slice(0, rutCompleto.length - 1);
 	var password = req.body.password;
