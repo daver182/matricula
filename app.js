@@ -62,9 +62,8 @@ app.get('/', function(req, res){
 
 app.post('/entrar', function(req, res){
 	var rutCompleto = req.body.rut;
-	var length = rutCompleto.length - 1;
-	var rut = rutCompleto.slice(0, length);
-	var digito = rutCompleto[length];
+	var rut = rutCompleto.slice(0, rutCompleto.length - 1);
+	var password = req.body.password;
 
 	var request = new sql.Request();
 	request.query('SELECT CODCLI,DIG,PATERNO,MATERNO,NOMBRE,DIRACTUAL,COMUNA,CIUDADACT,FONOACT,CELULARACT,EMAILACT FROM MT_CLIENT WHERE CODCLI = ' + rut, function(err, alumno) {
@@ -72,8 +71,12 @@ app.post('/entrar', function(req, res){
 
 		console.log(alumno)
 		if(alumno.length !== 0){
-			if(alumno[0].DIG === digito){
-				console.log(alumno[0]);
+			if(alumno[0].CODCLI === password){
+				for (var propiedad in alumno[0]) {
+					if(alumno[0][propiedad] === null){
+						alumno[0][propiedad] = '';
+					}
+				}
 				req.session.alumno = alumno[0];
 				res.redirect('/datos');
 			}else{

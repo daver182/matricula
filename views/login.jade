@@ -3,9 +3,12 @@ extends layout
 block content
 	if error
 		.alert.alert-danger(role="alert")=error
-	form(role="form", method="POST", action="/entrar")
+	form#login-form(role="form", method="POST", action="/entrar", novalidate)
 		.form-group
-			label(for="RUT") Ingresa tu RUT
-			input.form-control(type="text", name="rut", required, placeholder="Sin puntos ni guiones")
+			label(for="RUT") Ingresa tu RUT:
+			input.form-control.rut(type="text", name="rut", required, placeholder="Sin puntos ni guiones")
+		.form-group
+			label(for="RUT") Ingresa tu contraseña:
+			input.form-control(type="password", name="password", required, placeholder="Tu RUT sin el digito verificador")
 
 		button.btn.btn-primary(type="submit") Entrar

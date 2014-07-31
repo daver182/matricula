@@ -2,39 +2,40 @@ extends layout
 
 block content
 	h2 Tus Datos
-	form(role="form", method="POST", action="/guardar")
-		label(for="rut_completo") RUT:
-		input.form-control(type="text", name="rut_completo", value="#{alumno.CODCLI + '-' + alumno.DIG}" , disabled) 
-		br
-		label(for="nombre_completo") Nombre Completo:
-		input.form-control(type="text", name="nombre_completo", value="#{alumno.NOMBRE + ' ' + alumno.PATERNO + ' ' + alumno.MATERNO}", disabled)
-		br
-		label(for="direccion") Dirección:
-		input.form-control(type="text", name="direccion", value="#{alumno.DIRACTUAL}", required)
-		br
-		label(for="comuna") Comuna:
-		select.form-control(name="comuna", required)
-			each comuna in comunas
-				-if(comuna.NOMCOMUNA == alumno.COMUNA)
-					option(value="#{comuna.NOMCOMUNA}", selected)=comuna.NOMCOMUNA
-				-else
-					option(value="#{comuna.NOMCOMUNA}")=comuna.NOMCOMUNA
-		br
-		label Ciudad:
-		select.form-control(name="ciudad", required)
-			each ciudad in ciudades
-				-if(ciudad.NOMCIUDAD == alumno.CIUDADACT)
-					option(value="#{ciudad.NOMCIUDAD}", selected)=ciudad.NOMCIUDAD
-				-else
-					option(value="#{ciudad.NOMCIUDAD}")=ciudad.NOMCIUDAD
-		br
-		label Teléfono Fijo:
-		input.form-control(type="text", name="telefono", value="#{alumno.FONOACT}", required)
-		br
-		label Teléfono Celular:
-		input.form-control(type="text", name="telefono", value="#{alumno.CELULARACT}", required)
-		br
-		label Email:
-		input.form-control(type="text", name="email", value="#{alumno.EMAILACT}", required)
-		br
+	form#datos-form(role="form", method="POST", action="/guardar", novalidate)
+		.form-group
+			label(for="rut_completo") RUT:
+			input.form-control.rut(type="text", name="rut_completo", value="#{alumno.CODCLI + '-' + alumno.DIG}" , disabled) 	
+		.form-group
+			label(for="nombre_completo") Nombre Completo:
+			input.form-control(type="text", name="nombre_completo", value="#{alumno.NOMBRE + ' ' + alumno.PATERNO + ' ' + alumno.MATERNO}", disabled)
+		.form-group
+			label(for="direccion") Dirección:
+			input.form-control(type="text", name="direccion", value="#{alumno.DIRACTUAL}", required)
+		.form-group
+			label(for="comuna") Comuna:
+			select.form-control(name="comuna")
+				each comuna in comunas
+					-if(comuna.NOMCOMUNA == alumno.COMUNA)
+						option(value="#{comuna.NOMCOMUNA}", selected)=comuna.NOMCOMUNA
+					-else
+						option(value="#{comuna.NOMCOMUNA}")=comuna.NOMCOMUNA
+		.form-group
+			label Ciudad:
+			select.form-control(name="ciudad")
+				each ciudad in ciudades
+					-if(ciudad.NOMCIUDAD == alumno.CIUDADACT)
+						option(value="#{ciudad.NOMCIUDAD}", selected)=ciudad.NOMCIUDAD
+					-else
+						option(value="#{ciudad.NOMCIUDAD}")=ciudad.NOMCIUDAD
+		.form-group
+			label Teléfono Fijo:
+			input.form-control(type="text", name="telefono", value="#{alumno.FONOACT}", required)
+		.form-group
+			label Teléfono Celular:
+			input.form-control(type="text", name="celular", value="#{alumno.CELULARACT}", required)
+		.form-group
+			label Email:
+			input.form-control(type="email", name="email", value="#{alumno.EMAILACT}", required)
+		
 		button.btn.btn-primary(type="submit") Guardar
