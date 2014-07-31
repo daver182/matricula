@@ -13,7 +13,7 @@ $(document).ready(function(){
 			form.submit();
 		},
 		messages: {
-			rut: "Tu RUT es requerido o es incorrecto",
+			rut: "Tu RUT es necesario y debe ser correcto",
 			password: "La contraseña no puede estar en blanco"
 		},
 		highlight: function(element, errorClass) {

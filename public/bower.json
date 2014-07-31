@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.2.0",
-    "jquery-validation": "~1.13.0"
+    "jquery-validation": "~1.13.0",
+    "jquery.rut": "*"
   }
 }
