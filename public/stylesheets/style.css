@@ -11,16 +11,20 @@ body{
 	border-bottom: #FC0 4px solid;
 }
 
-.container-fluid .row:first-child header{
-	text-align: center;color: white;
-}
 
 .container-fluid .row:last-child{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.container-fluid .row:last-child .content{
+.container-fluid .row:last-child form{
+	background: #fff;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.contenido{
+	text-align: center;;
 	background: #fff;
 	border-radius: 10px;
 	padding: 30px;
